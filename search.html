@@ -7,10 +7,10 @@
         <link rel ="stylesheet" href = "style.css"/>
 </head>
 <body>
-	<h1>Search for Exercises</h1>
+	<!-- <h1>Search for Exercises</h1> -->
     <nav>
         <ul class="nav"> 
-          <li>  <a href="index.html"> Home </a> </li>
+          <!-- <li>  <a href="index.html"> Home </a> </li> -->
           <li> <a href="track.html"> Track your Workouts </a></li>
           <li> <a href="search.html"> Search for Exercises </a></li>
     
@@ -59,7 +59,7 @@
         </select>
         </br>
         </p>
-        <input type = "button" value = "Search" />
+        <input class = "tracker" type = "button" value = "Search" />
 
         <div id = "body text">
         </div>
@@ -104,7 +104,7 @@
                                 str = str + "<b>" +res[i]["name"] + " </b> <br>" +  res[i]["instructions"]+ "<br> <br>";
                             }
 				if (str = "<h3> Recommended Exercises </h3>") {
-					str = "<h3> Given this search criteria, no Recommended Exercises found. </h3>"
+					str = "<h3> Given this search criteria, no recommended exercises found </h3>"
 					
 				}
 
