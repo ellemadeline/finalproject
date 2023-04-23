@@ -4,6 +4,7 @@
 	  <meta charset="utf-8"/>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel ="stylesheet" href = "style.css"/>
+    <script src="exercise.js"></script>
 <head> 
 
 </head>
@@ -18,7 +19,7 @@
 
     </ul>
   </nav>
-  <form method='post' action = "https://localhost:3000/exercise">
+  <form method="post" action="/contact">
     <h3>Track Your Workouts!</h3>
     Exercise Name  <input type="text" name="exercisename">
     <br>     <br>
@@ -30,10 +31,48 @@
     Number of sets: <input type="text" name="sets">
     <br>   <br>
     Other information:<input type="text" name = "others">
-	<br> <br>
     <input type="submit" value="Track!">
-</form>
+  </form>
 
+
+    <script>
+      const form = document.querySelector('form');
+      form.addEventListener('submit', async (event) => {
+        console.log("hello");
+        event.preventDefault();
+
+        const formData = new FormData(form);
+        const data = {
+          name: formData.get('exercisename'),
+          reps: formData.get('reps'),
+          sets: formData.get('sets'),
+          other:formData.get('others')
+        };
+
+        try {
+          const response = await fetch('http://localhost:3000/', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+          });
+
+          if (response.status === 409) {
+            errorMessage.textContent = await response.text();
+            errorMessage.style.display = 'block';
+            successMessage.style.display = 'none';
+          } else {
+            errorMessage.style.display = 'none';
+            successMessage.textContent = 'Thanks for registering!';
+            successMessage.style.display = 'block';
+          }
+        } catch (error) {
+          console.error('Error submitting the form:', error);
+        }
+      });
+
+    </script>
 <br> 
 
 <br> <br>
