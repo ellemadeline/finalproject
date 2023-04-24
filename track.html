@@ -33,7 +33,46 @@
 	<br> <br>
     <input class = "tracker" type="submit" value="Track!">
 </form>
+<script>
+     
+      const form = document.querySelector('form');
+      const errorMessage = document.getElementById('error-message');
+      const successMessage = document.getElementById('success-message');
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
 
+        const formData = new FormData(form);
+        const data = {
+          name: formData.get('exercisename'),
+          reps: formData.get('reps'),
+          sets: formData.get('sets'),
+          other:formData.get('other')
+        };
+
+        try {
+          const response = await fetch('http://localhost:3000/track', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+          });
+
+          if (response.status === 409) {
+            errorMessage.textContent = await response.text();
+            errorMessage.style.display = 'block';
+            successMessage.style.display = 'none';
+          } else {
+            errorMessage.style.display = 'none';
+            alert( 'Thanks for registering!');
+            successMessage.style.display = 'block';
+          }
+        } catch (error) {
+          console.error('Error submitting the form:', error);
+        }
+      });
+
+    </script>
 <br> 
 
 <br> <br>
