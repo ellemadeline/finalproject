@@ -1,14 +1,15 @@
 const mongodb = require("mongodb");
 const MongoClient = mongodb.MongoClient;
 // This is my password file containing my password to my Mongo. I keep it in a separate file and import it but for my own privacy I'm not addinog that file
-const { password } = require("./pass.js");
-const url = "mongodb+srv://nate_nemeth:" + password + "@cluster0.5sv2hjr.mongodb.net/?retryWrites=true&w=majority";
-const { username } = require("./login.js");
+// const { password } = require("./pass.js");
+const url = "mongodb+srv://nate_nemeth:" +  + "@cluster0.5sv2hjr.mongodb.net/?retryWrites=true&w=majority";
+// const { username } = require("./login.js");
+const username = "matt@gmail.com";
 const bodyParser = require('body-parser');
 const express = require("express");
 const app = express();
 
-const port = 3000;
+const port = 8080;
 
 app.use(bodyParser.json());
 
@@ -25,16 +26,22 @@ app.get("/exercise", async function (req, res) {
 
 // Endpoint to add an exercise as described by the user
 app.post("/exercise", async function (req, res) {
+    console.log("in post");
     let query = createQuery(req);
     if (!checkInput(query)) {
+        console.log("bad 1");
         res.status(400).end("Invalid Input Parameteres");
     }
     try {
+        console.log("adding exercise");
         await addExercise(query);
+        console.log("added exercise");
     } catch (err) {
+        console.log("bad 2");
         res.status(400).end("Create resulted in errors");
     }
     // Do we want to send anything back here?
+    console.log("sending back good");
     res.status(200).send();
 })
 
