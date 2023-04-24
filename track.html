@@ -23,7 +23,7 @@
     Exercise Name  <input type="text" name="exercisename">
     <br>     <br>
     Date of Exercise
-    <input type="date">
+    <input type="date" name="date">
     <br>     <br>
     Number of reps per set: <input type="text" name="reps">
     <br>     <br>
@@ -44,26 +44,33 @@
         const formData = new FormData(form);
         const data = {
           name: formData.get('exercisename'),
+          date: formData.get('date'),
           reps: formData.get('reps'),
           sets: formData.get('sets'),
           other:formData.get('other')
         };
-        alert(data["name"]);
-
+        alert(formData.get('exercisename'));
         try {
           alert("in fetch");
           const response = await fetch('http://localhost:8080/exercise', {
             method: 'POST',
-            // headers: {
-            //   'Content-Type': 'application/json'
-            // },
-            body: JSON.stringify(data)
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            // body: {
+            //   "name": formData.get('exercisename'),
+            //   "date": formData.get('date'),
+            //   "reps": formData.get('reps'),
+            //   "sets": formData.get('sets'),
+            //   "other":formData.get('other')
+            // }
+            body : JSON.stringify(data),
           });
           alert("after fetch");
           if (response.status === 400) {
-            errorMessage.textContent = await response.text();
-            errorMessage.style.display = 'block';
-            successMessage.style.display = 'none';
+            // errorMessage.textContent = await response.text();
+            // errorMessage.style.display = 'block';
+            // successMessage.style.display = 'none';
             alert("got an error");
           } else if (response.status === 200) {
             alert("it went fine");
