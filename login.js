@@ -89,9 +89,7 @@ app.post("/login", async (req, res) => {
     }
 
     // Export function to get logged in user's username
-    module.exports = function getUsername() {
-      return username;
-    }
+    module.exports = username;
 
     // Send success response
     res.send("Login successful!");
