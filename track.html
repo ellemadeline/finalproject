@@ -36,9 +36,9 @@
 <script>
      
       const form = document.querySelector('form');
-      const errorMessage = document.getElementById('error-message');
-      const successMessage = document.getElementById('success-message');
+      alert("got the form");
       form.addEventListener('submit', async (event) => {
+        alert("in event listener");
         event.preventDefault();
 
         const formData = new FormData(form);
@@ -48,20 +48,25 @@
           sets: formData.get('sets'),
           other:formData.get('other')
         };
+        alert(data["name"]);
 
         try {
-          const response = await fetch('http://localhost:3000/track', {
+          alert("in fetch");
+          const response = await fetch('http://localhost:8080/exercise', {
             method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
+            // headers: {
+            //   'Content-Type': 'application/json'
+            // },
             body: JSON.stringify(data)
           });
-
-          if (response.status === 409) {
+          alert("after fetch");
+          if (response.status === 400) {
             errorMessage.textContent = await response.text();
             errorMessage.style.display = 'block';
             successMessage.style.display = 'none';
+            alert("got an error");
+          } else if (response.status === 200) {
+            alert("it went fine");
           } else {
             errorMessage.style.display = 'none';
             alert( 'Thanks for registering!');
