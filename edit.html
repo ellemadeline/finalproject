@@ -57,19 +57,39 @@
         sets = document.getElementById("sets");
 
 
-        reps.addEventListener('click', function() {
+        reps.addEventListener('change', function() {
+          if (this.checked) {
+            str = "Please enter the new number of reps <input type= 'text' name='changing'> ";
+            document.getElementById("inforeps").innerHTML  = str;
+            document.getElementById("inforeps").display  = "block";
+            
+            
+          }
+          else {
+            document.getElementById("inforeps").display = "none";
+            console.log("in display none");
+            document.getElementById("inforeps").innerHTML  = "";
+
+            
+          }
         console.log("here");
 
-        str = "Please enter the new number of reps <input type= 'text' name='changing'> ";
-        document.getElementById("inforeps").innerHTML  = str;
-
+        
 });
 
 sets.addEventListener('click', function() {
 
-str = "Please enter the new number of sets <input type= 'text' name='changing'>";
-document.getElementById("infosets").innerHTML  = str;
+  if (this.checked) {
+    str = "Please enter the new number of sets <input type= 'text' name='changing'>";
+    document.getElementById("infosets").innerHTML  = str;
+    document.getElementById("infosets").display  = "block";
 
+  }
+  else {
+    document.getElementById("infosets").display = "none";
+    document.getElementById("infosets").innerHTML  = "";
+  }
+   
 
 });
 
