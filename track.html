@@ -20,19 +20,20 @@
   </nav>
   <form>
     <h3>Track Your Workouts!</h3>
-    Exercise Name  <input type="text" name="exercisename">
+    Exercise Name  <input type="text" name="exercisename" required>
     <br>     <br>
     Date of Exercise
-    <input type="date" name="date">
+    <input type="date" name="date" required>
     <br>     <br>
-    Number of reps per set: <input type="text" name="reps">
+    Number of reps per set: <input type="text" name="reps" required>
     <br>     <br>
-    Number of sets: <input type="text" name="sets">
+    Number of sets: <input type="text" name="sets" required>
     <br>   <br>
     Other information:<input type="text" name = "others">
 	<br> <br>
     <input class = "tracker" type="submit" value="Track!">
 </form>
+<div id="display"></div>
 <script>
      
       const form = document.querySelector('form');
@@ -63,6 +64,8 @@
             // successMessage.style.display = 'none';
             alert("got an error");
           } else if (response.status === 200) {
+            let box = document.getElementById("display");
+            box.innerHTML = response.text();
             alert("it went fine");
           } else {
             errorMessage.style.display = 'none';
