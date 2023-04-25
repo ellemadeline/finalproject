@@ -33,7 +33,7 @@
     <br>   <br>
     Other information:<input type="text" name = "others">
 	<br> <br>
-    <input class = "tracker" type="submit" value="Track!">
+    <input class = "tracker" type="submit" value="Get Exercises!">
 </form>
 
 <div id = "display"> </div>
@@ -78,7 +78,9 @@
           console.error('Error submitting the form:', error);
         }
       });
- 
+	changer = "<h3> Want to edit or delete one of these exercises? </h3>";
+	changer += "<a href='edit.html'> Edit Your Workout </a>";
+ 	document.getElementById("display").innerHTML = changer;
 
     </script>
 <br> 
