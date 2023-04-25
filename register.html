@@ -107,7 +107,7 @@
             successMessage.style.display = 'none';
           } else {
             errorMessage.style.display = 'none';
-            successMessage.textContent = 'Thanks for registering! <br> <br> <a href="login.html">Click to Login</a>';
+            successMessage.innerHTML = 'Thanks for registering! <br> <br> <a href="login.html">Click to Login</a>';
             successMessage.style.display = 'block';
           }
         } catch (error) {
