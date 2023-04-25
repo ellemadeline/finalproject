@@ -12,7 +12,6 @@
 <!-- <h2> Exercise for your Health!</h2> -->
 <nav>
     <ul class="nav"> 
-      <!-- <li>  <a href="index.html"> Home </a> </li> -->
       <li> <a href="track.html"> Track your Workouts </a></li>
       <li> <a href="search.html"> Search for Exercises </a></li>
       <li> <a href="edit.html"> Edit Your Workout </a></li>
@@ -21,7 +20,7 @@
 
     </ul>
   </nav>
-  <form method='post' action = "https://localhost:3000/exercise">
+  <form method='get' action = "https://localhost:3000/exercise">
     <h3>Track Your Workouts!</h3>
     Exercise Name  <input type="text" name="exercisename">
     <br>     <br>
@@ -56,7 +55,7 @@
         };
         try {
           const response = await fetch('http://localhost:8080/exercise', {
-            method: 'POST',
+            method: 'GET',
             headers: {
               'Content-Type': 'application/json'
             },
