@@ -2,6 +2,8 @@
 var express = require("express");
 var app = express();
 var mongoose = require("mongoose")
+var port = process.env.PORT || 3000;
+
 
 // Define connection parameters for MongoDB
 var dbUrl = "mongodb+srv://inspiredByW3:inspired@clusterproject.vscbs1b.mongodb.net/info?retryWrites=true&w=majority"
@@ -101,6 +103,6 @@ app.post("/login", async (req, res) => {
 });
 
 // Start server
-app.listen(3000, () => {
-  console.log("Server listening on port 3000");
+app.listen(port, () => {
+  console.log("Server listening on port " + port);
 });
