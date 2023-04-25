@@ -48,7 +48,6 @@ http.createServer(function (req, res)
 		}
 		else if (req.url == "/login.html")
 		{
-	
 		   file = 'login.html';
 		   fs.readFile(file, 'utf8', function(err, txt) {
 			   res.writeHead(200, {'Content-Type': 'text/html'});
@@ -56,8 +55,7 @@ http.createServer(function (req, res)
 			   res.end();
 		   });
 		}
-	
-	else if (req.url == "/style.css")
+		else if (req.url == "/style.css")
 		{
 		   file = 'style.css';
 		   fs.readFile(file, 'utf8', function(err, txt) {
@@ -66,7 +64,6 @@ http.createServer(function (req, res)
 			   res.end();
 		   });
 		}
-
 
 	   else 
 	  	{
