@@ -4,9 +4,7 @@ var qs = require('querystring');
 
 http.createServer(function (req, res) 
   {
-	// console.log("Beginning");
-	// console.log(req.url);
-	if (req.url == "/track")
+	if (req.url == "/track.html")
 	 {
 	  console.log("track");
 
@@ -17,9 +15,9 @@ http.createServer(function (req, res)
 			res.end();
 		});
 
-	}
+		}
 
-	  else if (req.url == "/view")
+	  else if (req.url == "/view.html")
 		{
 		 console.log("view");
 		   file = 'view.html';
@@ -29,8 +27,7 @@ http.createServer(function (req, res)
 			   res.end();
 		   });
 		}
-
-		else if (req.url == "/search")
+		else if (req.url == "/search.html")
 		{
 		 console.log("view");
 		   file = 'search.html';
@@ -41,11 +38,11 @@ http.createServer(function (req, res)
 		   });
 		}
 	   else 
-	  {
+	  	{
 		  res.writeHead(200, {'Content-Type':'text/html'});
 		  res.write ("Unknown page request");
 		  res.end();
-	  }
+	  	}
   
 
 
