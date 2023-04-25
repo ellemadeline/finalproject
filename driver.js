@@ -56,6 +56,17 @@ http.createServer(function (req, res)
 			   res.end();
 		   });
 		}
+	
+	else if (req.url == "/style.css")
+		{
+		   file = 'style.css';
+		   fs.readFile(file, 'utf8', function(err, txt) {
+			   res.writeHead(200, {'Content-Type': 'text/css'});
+			   res.write(txt);
+			   res.end();
+		   });
+		}
+
 
 	   else 
 	  	{
