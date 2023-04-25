@@ -29,7 +29,7 @@ http.createServer(function (req, res)
 		}
 		else if (req.url == "/search.html")
 		{
-		 console.log("view");
+		 console.log("search");
 		   file = 'search.html';
 		   fs.readFile(file, 'utf8', function(err, txt) {
 			   res.writeHead(200, {'Content-Type': 'text/html'});
@@ -37,6 +37,26 @@ http.createServer(function (req, res)
 			   res.end();
 		   });
 		}
+		else if (req.url == "/register.html")
+		{
+		   file = 'register.html';
+		   fs.readFile(file, 'utf8', function(err, txt) {
+			   res.writeHead(200, {'Content-Type': 'text/html'});
+			   res.write(txt);
+			   res.end();
+		   });
+		}
+		else if (req.url == "/login.html")
+		{
+	
+		   file = 'login.html';
+		   fs.readFile(file, 'utf8', function(err, txt) {
+			   res.writeHead(200, {'Content-Type': 'text/html'});
+			   res.write(txt);
+			   res.end();
+		   });
+		}
+
 	   else 
 	  	{
 		  res.writeHead(200, {'Content-Type':'text/html'});
