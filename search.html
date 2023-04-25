@@ -64,7 +64,7 @@
         </p>
         <input class = "tracker" type = "button" value = "Search" />
 
-        <div id = "body text">
+        <div id = "body-text">
         </div>
 
 
@@ -106,13 +106,13 @@
                             for(i = 0; i < res.length;i++){
                                 str = str + "<b>" +res[i]["name"] + " </b> <br>" +  res[i]["instructions"]+ "<br> <br>";
                             }
-				if (str = "<h3> Recommended Exercises </h3>") {
-					str = "<h3> Given this search criteria, no recommended exercises found </h3>"
+// 				if (str = "<h3> Recommended Exercises </h3>") {
+// 					str = "<h3> Given this search criteria, no recommended exercises found </h3>";
 					
-				}
+// 				}
 
 
-                          document.getElementById("body text").innerHTML = str;
+                          document.getElementById("body-text").innerHTML = str;
                                 
                         },
                         error: function ajaxError(jqXHR) {
