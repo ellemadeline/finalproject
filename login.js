@@ -44,7 +44,7 @@ app.get("/login", (req, res) => {
 
 app.get("/home", (req, res) => { 
   // Send home page as response for GET requests to /home path
-  res.sendFile(__dirname + "/index.html");
+  res.sendFile(__dirname + "/track.html");
 });
 
 app.post("/contact", async (req, res) => {
