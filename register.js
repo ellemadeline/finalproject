@@ -3,6 +3,8 @@ var express = require("express");
 // Create an instance of the express app
 var app = express();
 var mongoose = require("mongoose")
+var port = process.env.PORT || 3000;
+
 
 // URL Database to connect to
 var dbUrl = "mongodb+srv://inspiredByW3:inspired@clusterproject.vscbs1b.mongodb.net/info?retryWrites=true&w=majority"
@@ -77,8 +79,8 @@ app.post("/contact", async (req, res) => {
 }
   });
 
-app.listen(3000, () => {
-  console.log("Server listening on port 3000");
+app.listen(port, () => {
+  console.log("Server listening on port " + port);
 });
 
 
