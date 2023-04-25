@@ -100,36 +100,47 @@
         str += "<h4> Want to edit or delete any of your current exercises? </h4> <br> ";
         str += "<a href= 'edit.html'> Edit Your Workout </a>";
         document.getElementById("body-text").innerHTML = str;
+     
+      const form = document.querySelector('form');
+      alert("got the form");
+      form.addEventListener('submit', async (event) => {
+        alert("in event listener");
+        event.preventDefault();
+
+        const formData = new FormData(form);
+        const data = {
+          name: formData.get('exercisename'),
+          date: formData.get('date'),
+          reps: formData.get('reps'),
+          sets: formData.get('sets'),
+          other:formData.get('other')
+        };
+        try {
+          const response = await fetch('http://localhost:8080/exercise', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body : JSON.stringify(data),
+          });
+          if (response.status === 400) {
+            // errorMessage.textContent = await response.text();
+            // errorMessage.style.display = 'block';
+            // successMessage.style.display = 'none';
+            alert("got an error");
+          } else if (response.status === 200) {
+            alert("it went fine");
+          } else {
+            errorMessage.style.display = 'none';
+            alert( 'Thanks for registering!');
+            successMessage.style.display = 'block';
+          }
+        } catch (error) {
+          console.error('Error submitting the form:', error);
+        }
+      });
 
 
-        // $.ajax({
-        //                 method: 'GET',
-        //                 url: 'https://api.api-ninjas.com/v1/exercises?' + param,
-        //                 headers: { 'X-Api-Key': 'zPDJL5tOd8kl3L40tvTx4w==zN1xxx6DaZjEqE2c'},
-        //                 contentType: 'application/json',
-        //                 success: function(result) {
-        //                      str = "<h3> Recommended Exercises </h3>";
-        //                     result = JSON.stringify(result);
-        //                     res = JSON.parse(result);
-        //                     console.log(res.length);
-        //                     for(i = 0; i < res.length;i++){
-        //                         str = str + "<b>" +res[i]["name"] + " </b> <br>" +  res[i]["instructions"]+ "<br> <br>";
-        //                     }
-	// 			if (str = "<h3> Recommended Exercises </h3>") {
-	// 				str = "<h3> Given this search criteria, no recommended exercises found </h3>"
-					
-	// 			}
-
-
-        //                   document.getElementById("body text").innerHTML = str;
-                                
-        //                 },
-        //                 error: function ajaxError(jqXHR) {
-        //                     console.error('Error: ', jqXHR.responseText);
-        //                 }
-        // });
-    
-   });
     </script> 
 </body>
 </html>
