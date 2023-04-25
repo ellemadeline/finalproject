@@ -1,11 +1,11 @@
 <!doctype html>
 <html>
-    <title>Exercise</title>
-	  <meta charset="utf-8"/>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel ="stylesheet" href = "style.css"/>
+    
 <head> 
-
+  <title>Exercise</title>
+  <meta charset="utf-8"/>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel ="stylesheet" href = "style.css"/>
 </head>
 
 <body>
@@ -18,7 +18,7 @@
 
     </ul>
   </nav>
-  <form method='post' action = "https://localhost:3000/exercise">
+  <form>
     <h3>Track Your Workouts!</h3>
     Exercise Name  <input type="text" name="exercisename">
     <br>     <br>
@@ -49,24 +49,14 @@
           sets: formData.get('sets'),
           other:formData.get('other')
         };
-        alert(formData.get('exercisename'));
         try {
-          alert("in fetch");
-          const response = await fetch('http://localhost:8080/exercise', {
+          const response = await fetch('http://localhost:8090/exercise', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
             },
-            // body: {
-            //   "name": formData.get('exercisename'),
-            //   "date": formData.get('date'),
-            //   "reps": formData.get('reps'),
-            //   "sets": formData.get('sets'),
-            //   "other":formData.get('other')
-            // }
             body : JSON.stringify(data),
           });
-          alert("after fetch");
           if (response.status === 400) {
             // errorMessage.textContent = await response.text();
             // errorMessage.style.display = 'block';
