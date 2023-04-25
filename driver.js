@@ -1,6 +1,7 @@
 var http = require('http');
 var fs = require('fs');
 var qs = require('querystring');
+var port = process.env.PORT || 3000;
 
 http.createServer(function (req, res) 
   {
@@ -107,4 +108,4 @@ http.createServer(function (req, res)
 	//   }
   
 
-}).listen(3000);
+}).listen(port);
