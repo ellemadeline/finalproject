@@ -2,14 +2,17 @@ const mongodb = require("mongodb");
 const MongoClient = mongodb.MongoClient;
 // This is my password file containing my password to my Mongo. I keep it in a separate file and import it but for my own privacy I'm not addinog that file
 // const { password } = require("./pass.js");
-const url = "mongodb+srv://nate_nemeth:" +  + "@cluster0.5sv2hjr.mongodb.net/?retryWrites=true&w=majority";
+const url = "mongodb+srv://nate_nemeth:" + "StrawberryF1elds" + "@cluster0.5sv2hjr.mongodb.net/?retryWrites=true&w=majority";
 // const { username } = require("./login.js");
 const username = "matt@gmail.com";
 const bodyParser = require('body-parser');
 const express = require("express");
 const app = express();
 
-const port = 8080;
+const cors = require("cors");
+app.use(cors());
+
+const port = 8090;
 
 app.use(bodyParser.json());
 
@@ -20,28 +23,25 @@ app.get("/exercise", async function (req, res) {
         var exercises = await getExercises(query);
     } catch (err) {
         res.status(400).end("Search resulted in errors");
+        return;
     }
     res.status(200).send(exercises);
 })
 
 // Endpoint to add an exercise as described by the user
 app.post("/exercise", async function (req, res) {
-    console.log("in post");
     let query = createQuery(req);
     if (!checkInput(query)) {
-        console.log("bad 1");
         res.status(400).end("Invalid Input Parameteres");
+        return;
     }
     try {
-        console.log("adding exercise");
         await addExercise(query);
-        console.log("added exercise");
     } catch (err) {
-        console.log("bad 2");
         res.status(400).end("Create resulted in errors");
+        return;
     }
     // Do we want to send anything back here?
-    console.log("sending back good");
     res.status(200).send();
 })
 
@@ -49,6 +49,7 @@ app.post("/exercise", async function (req, res) {
 app.put("/exercise", async function (req, res) {
     if (req.body.id === undefined) {
         res.status(400).end("Invalid Input Parameters");
+        return;
     }
     let query = { "_id" : new mongodb.ObjectId(req.body.id) };
     let changes = { $set : createQuery(req) };
@@ -57,6 +58,7 @@ app.put("/exercise", async function (req, res) {
         await changeExercise(query, changes);
     } catch (err) {
         res.status(400).end("Change resulted in errors");
+        return;
     }
     // What's sent back here might be useful in case of an undo button
     res.status(200).send();
@@ -65,7 +67,8 @@ app.put("/exercise", async function (req, res) {
 // Endpoint to delete an exercise indicated by the user
 app.delete("/exercise", async function (req, res) {
     if (req.body.id === undefined) {
-        res.status(400).end("Invalid Input Parameters")
+        res.status(400).end("Invalid Input Parameters");
+        return;
     }
     let query = { "_id" : new mongodb.ObjectId(req.body.id) };
     try {
@@ -73,6 +76,7 @@ app.delete("/exercise", async function (req, res) {
         await removeExercise(query);
     } catch (err) {
         res.status(400).end("Delete resulted in errors");
+        return;
     }
     // What's sent back here might be useful in case of an undo button
     res.status(200).send();
