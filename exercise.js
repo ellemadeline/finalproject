@@ -2,7 +2,7 @@ const mongodb = require("mongodb");
 const MongoClient = mongodb.MongoClient;
 // This is my password file containing my password to my Mongo. I keep it in a separate file and import it but for my own privacy I'm not addinog that file
 // const { password } = require("./pass.js");
-const url = "mongodb+srv://nate_nemeth:" + "StrawberryF1elds" + "@cluster0.5sv2hjr.mongodb.net/?retryWrites=true&w=majority";
+const url = "mongodb+srv://nate_nemeth:" + _____ +"@cluster0.5sv2hjr.mongodb.net/?retryWrites=true&w=majority";
 // const { username } = require("./login.js");
 const username = "matt@gmail.com";
 const bodyParser = require('body-parser');
@@ -12,7 +12,7 @@ const app = express();
 const cors = require("cors");
 app.use(cors());
 
-const port = 8090;
+const port = 8080;
 
 app.use(bodyParser.json());
 
