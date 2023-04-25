@@ -36,12 +36,10 @@
     <br>     <br>
     Number of sets: <input type="text" name="sets">
     <br>   <br>
-    Other information:<input type="text" name = "others">
-	<br> <br>
     <input class = "tracker" type="submit" value="Get Exercises!">
 </form>
 
-<div id = "display"> </div>
+<!-- <div id = "display"> </div> -->
 <script>
      
       const form = document.querySelector('form');
@@ -56,7 +54,6 @@
           date: formData.get('date'),
           reps: formData.get('reps'),
           sets: formData.get('sets'),
-          other:formData.get('other')
         };
         try {
           const response = await fetch('http://localhost:8080/exercise', {
