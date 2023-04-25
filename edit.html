@@ -103,6 +103,55 @@ sets.addEventListener('click', function() {
     console.log('No was selected');
   });
 
+  const form = document.getElementById("extra");
+      alert("got the form");
+      // form.addEventListener('submit', async (event) => {
+        alert("in event listener");
+        event.preventDefault();
+
+        // const formData = new FormData(form);
+        const data = {
+          name: form.innerHTML,
+          date: formData.get('date'), //?? not sure here, can add a line that does this
+          reps: formData.get('reps'),
+          sets: formData.get('sets'),
+          other:undefined
+        };
+        alert(formData.get('exercisename'));
+        try {
+          alert("in fetch");
+          const response = await fetch('http://localhost:8080/exercise', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            // body: {
+            //   "name": formData.get('exercisename'),
+            //   "date": formData.get('date'),
+            //   "reps": formData.get('reps'),
+            //   "sets": formData.get('sets'),
+            //   "other":formData.get('other')
+            // }
+            body : JSON.stringify(data),
+          });
+          alert("after fetch");
+          if (response.status === 400) {
+            // errorMessage.textContent = await response.text();
+            // errorMessage.style.display = 'block';
+            // successMessage.style.display = 'none';
+            alert("got an error");
+          } else if (response.status === 200) {
+            alert("it went fine");
+          } else {
+            errorMessage.style.display = 'none';
+            alert( 'Thanks for registering!');
+            successMessage.style.display = 'block';
+          }
+        } catch (error) {
+          console.error('Error submitting the form:', error);
+        }
+      // });
+
   // valid = document.getElementsByName("toDelete");
 
 
