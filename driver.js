@@ -55,6 +55,15 @@ http.createServer(function (req, res)
 			   res.end();
 		   });
 		}
+		else if (req.url == "/edit.html")
+		{
+		   file = 'edit.html';
+		   fs.readFile(file, 'utf8', function(err, txt) {
+			   res.writeHead(200, {'Content-Type': 'text/html'});
+			   res.write(txt);
+			   res.end();
+		   });
+		}
 		else if (req.url == "/style.css")
 		{
 		   file = 'style.css';
