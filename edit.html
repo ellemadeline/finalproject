@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
         <head>
-                <title>Customize Your Workout</title>
+                <title>Edit Your Workout</title>
                 <meta charset="utf-8"/>
                 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
                 <link rel ="stylesheet" href = "style.css"/>
@@ -12,7 +12,9 @@
         <ul class="nav"> 
           <li> <a href="track.html"> Track your Workouts </a></li>
           <li> <a href="search.html"> Search for Exercises </a></li>
-          <li> <a href="edit.html"> Customize Your Workout </a></li>
+          <li> <a href="edit.html"> Edit Your Workout </a></li>
+          <li> <a href="view.html"> View Your Workout Plan </a></li>
+
         </ul>
       </nav>
 
@@ -30,9 +32,7 @@
         <div id = "new"> 
 
         </div>
-              
-        <!-- <input class = "tracker" type="submit" value="Track!"> -->
-    </form>
+         </form>
 
 
 
@@ -45,7 +45,7 @@
   yesRadio.addEventListener('change', function() {
     // Code to perform when "yes" is selected
     str = "<h3> Which exercise would you like to edit? </h3> <br>";
-    str += "<input type= 'text' name='toDelete'> <br> <br>";
+    str += "<input id = 'extra' type= 'text' name='toDelete'> <br> <br>";
     str += "<h4> Would you like to change the number of reps or number of sets? </h4>";
     str += "<input id = 'reps' type='checkbox' name='reporset' value='Reps'> Reps";
     str += "<input id = 'sets' type='checkbox' name='reporset' value='Sets'> Sets <br> <br>";
@@ -70,7 +70,6 @@
             console.log("in display none");
             document.getElementById("inforeps").innerHTML  = "";
 
-            
           }
         console.log("here");
 
@@ -98,11 +97,15 @@ sets.addEventListener('click', function() {
   noRadio.addEventListener('change', function() {
         str = "<h3> Which exercise would you like to delete? </h3> <br> <br>";
         str += "<input type= 'text' name='toDelete'> <br> <br>";
-        str += "<input class = 'tracker' type='submit'>";
+        str += "<input class = 'tracker' type='submit' value = 'Delete'>";
     // Code to perform when "no" is selected
     document.getElementById("new").innerHTML  = str;
     console.log('No was selected');
   });
+
+  // valid = document.getElementsByName("toDelete");
+
+
 
 
 
