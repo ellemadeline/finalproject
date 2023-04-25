@@ -15,8 +15,6 @@
       <!-- <li>  <a href="index.html"> Home </a> </li> -->
       <li> <a href="track.html"> Track your Workouts </a></li>
       <li> <a href="search.html"> Search for Exercises </a></li>
-	          <li> <a href="edit.html"> Customize Your Workout </a></li>
-
 
     </ul>
   </nav>
@@ -25,7 +23,7 @@
     Exercise Name  <input type="text" name="exercisename">
     <br>     <br>
     Date of Exercise
-    <input type="date">
+    <input type="date" name="date">
     <br>     <br>
     Number of reps per set: <input type="text" name="reps">
     <br>     <br>
@@ -38,32 +36,34 @@
 <script>
      
       const form = document.querySelector('form');
-      const errorMessage = document.getElementById('error-message');
-      const successMessage = document.getElementById('success-message');
+      alert("got the form");
       form.addEventListener('submit', async (event) => {
+        alert("in event listener");
         event.preventDefault();
 
         const formData = new FormData(form);
         const data = {
           name: formData.get('exercisename'),
+          date: formData.get('date'),
           reps: formData.get('reps'),
           sets: formData.get('sets'),
           other:formData.get('other')
         };
-
         try {
-          const response = await fetch('http://localhost:3000/track', {
+          const response = await fetch('http://localhost:8080/exercise', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
             },
-            body: JSON.stringify(data)
+            body : JSON.stringify(data),
           });
-
-          if (response.status === 409) {
-            errorMessage.textContent = await response.text();
-            errorMessage.style.display = 'block';
-            successMessage.style.display = 'none';
+          if (response.status === 400) {
+            // errorMessage.textContent = await response.text();
+            // errorMessage.style.display = 'block';
+            // successMessage.style.display = 'none';
+            alert("got an error");
+          } else if (response.status === 200) {
+            alert("it went fine");
           } else {
             errorMessage.style.display = 'none';
             alert( 'Thanks for registering!');
