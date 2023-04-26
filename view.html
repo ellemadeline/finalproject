@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head> 
+    <title>View Your Workout Plan</title>
+    <meta charset="utf-8"/>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="/resources/style.css"/>
+    <style>
+        #display {
+            text-align:center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        label {
+            margin-bottom: 10px;
+        }
+        input[type="date"] {
+            margin-bottom: 10px;
+            width: 10%;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <header> 
+        <div id="container">
+          <img id="logo" src="/resources/logo.jpeg">
+          <h1> E4U!</h1> 
+         <h2 id="slogan"> Exercise Program Assistant</h2>
+        </div>
+    </header>
+
+    <nav>
+        <ul class="nav"> 
+            <li> <a href="track"> Track your Workouts </a></li>
+            <li> <a href="search"> Search for Exercises </a></li>
+            <li> <a class="active" href="view"> View Your Workout Plan </a></li>
+        </ul>
+    </nav>
+
+    <div id="whole">
+        <form method="get" action="/exercise">
+            <h3>View Your Current Workouts! Please enter the given search criteria </h3>
+            <label> Exercise Name </label>  <input type="text" name="exercisename"> 
+            <br>    
+            <label>Date of Exercise</label>
+            <input type="date" name="date">
+            <br>
+            <input class="tracker" type="submit" value="Get Exercises!">
+        </form>
+    </div>
+
+    <div id="display"></div>
+    <script>
+    const form = document.querySelector('form');
+form.addEventListener('submit', async (event) => {
+    // alert("In event listener");
+    event.preventDefault();
+
+    const formData = new FormData(form);
+    const params = new URLSearchParams({
+        name: formData.get('exercisename'),
+        date: formData.get('date'),
+    });
+
+    const url = '/exercise?' + params.toString();
+    // alert("about to try");
+    try {
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        document.getElementById('display').innerHTML = await response.text();
+    } catch (error) {
+        console.error('Error submitting the form:', error);
+    }
+});
+
+</script>
+
+
+    <br> 
+    <br> <br>
+</body>
+</html>

@@ -1,0 +1,101 @@
+
+#container{
+  text-align: center;
+
+}
+
+body {
+        background-repeat: no-repeat;
+        background-color: lightblue;
+        background-attachment: fixed;
+        background-size: cover;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+#welcome {
+        text-align: center;
+
+}
+h1{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.tracker:hover:not(.active) {
+  background-color:royalblue;
+}
+header #logo{
+  float:left;
+ margin-left: 10%;
+width: 12%;
+min-width: 130px;
+  }
+  header{
+display: flex;
+  flex-direction: column;
+ padding: 2%;
+  }
+
+p#why {
+        display: block;
+        margin: 0 auto;
+        max-width: 800px;
+        text-align: center;
+      }
+        /* box-sizing: border-box; {
+      } */
+      nav{
+        margin-top:10px;
+        /* display: flex; */
+      }
+      ul.nav {
+        list-style-type: none;
+        margin: 0;
+        padding: 0%;
+        overflow: hidden;
+        background-color:#F7B040;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size:30px;
+        width:100%;
+        border: 2px solid darkgoldenrod;
+      }
+      ul.nav li {
+        float: left;
+        border-right: 1px solid darkgoldenrod;
+        width:32.8%;
+      }
+      ul.nav li a {
+        display: block;
+        padding-top: 4%;
+        padding-bottom: 4%;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+      }
+      ul.nav a:hover:not(.active) {
+        background-color:lightblue;
+      }
+      a.active {
+        background-color:royalblue;
+      }
+
+      .tracker {
+        background-color:#666;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-bottom: 5px solid #666;
+        border-left: 5px solid #666;
+        border-top: 5px solid #666;
+        border-right: 5px solid #666;
+}
+
+form {
+        text-align: center;
+}
+label{
+  width: 135px;
+  display:inline-block;
+}
+  

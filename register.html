@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Register for an Account</title>
+    <style>
+      body {
+        background-color: #F2F2F2;
+        font-family: Arial, sans-serif;
+      }
+      
+      h1 {
+        text-align: center;
+        color: #0077B6;
+      }
+      
+      form {
+        max-width: 500px;
+        margin: 0 auto;
+        background-color: #FFFFFF;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      
+      label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #0077B6;
+      }
+      
+      input[type=text], input[type=password] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #CCCCCC;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+      }
+      
+      input[type=submit] {
+        background-color: #0077B6;
+        color: #FFFFFF;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      
+      input[type=submit]:hover {
+        background-color: #005F8B;
+      }
+      
+      .register-header {
+        background-color: #0077B6;
+        color: #FFFFFF;
+        padding: 20px;
+        text-align: center;
+        border-radius: 5px 5px 0 0;
+      }
+      
+      .register-header h2 {
+        margin: 0;
+        font-size: 36px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Register</h1>
+    <form method="post" action="/contact">
+      <label>Username:</label>
+      <input type="text" name="username" required><br><br>
+      <label>Password:</label>
+      <input type="password" name="password" required><br><br>
+      <input type="submit" value="Submit"> <br><br>
+      <div id="error-message" style="color: red; display: none;"></div>
+      <div id="success-message" style="color: green; display: none;"></div>
+    </form>
+    <script>
+      const form = document.querySelector('form');
+      const errorMessage = document.getElementById('error-message');
+      const successMessage = document.getElementById('success-message');
+
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const formData = new FormData(form);
+        const data = {
+          username: formData.get('username'),
+          password: formData.get('password')
+        };
+
+        try {
+         const response = await fetch('/contact', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+          });
+
+          if (response.status === 409) {
+            errorMessage.textContent = await response.text();
+            errorMessage.style.display = 'block';
+            successMessage.style.display = 'none';
+          } else {
+            errorMessage.style.display = 'none';
+            successMessage.innerHTML = 'Thanks for registering! <br> <br> <a href="login">Click to Login</a>';
+            successMessage.style.display = 'block';
+          }
+        } catch (error) {
+          console.error('Error submitting the form:', error);
+        }
+      });
+    </script>
+  </body>
+</html>
+
+
+
