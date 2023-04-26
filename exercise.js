@@ -20,13 +20,17 @@ app.use(bodyParser.json());
 
 // Endpoint to get all exercises based off the users preferences
 app.get("/exercise", async function (req, res) {
+    alert("Beginning of get");
     let query = createQuery(req);
+    alert("after query");
     try {
         var exercises = await getExercises(query);
+        alert("after getExercises");
     } catch (err) {
         res.status(400).end("Search resulted in errors");
         return;
     }
+    alert("end of get");
     res.status(200).send(exercises);
 })
 
