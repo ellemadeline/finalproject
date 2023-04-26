@@ -1,2 +1,1 @@
-web: node driver.js
-worker: node exercise.js
+web: node server.js
