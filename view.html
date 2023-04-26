@@ -70,24 +70,28 @@ input[type="date"] {
 <script>
      
       const form = document.querySelector('form');
+	
     //   alert("got the form");
       form.addEventListener('submit', async (event) => {
         alert("in event listener");
         event.preventDefault();
 
         const formData = new FormData(form);
-        const data = {
-          name: formData.get('exercisename'),
-          date: formData.get('date'),
-        };
+	const params = new URLSearchParams({
+		  name: formData.get('exercisename'),
+		  date: formData.get('date'),
+	});
+
+	const url = '/exercise?' + params.toString();
+
+
         try {
-          const response = await fetch('/exercise', {
-            method: 'GET',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body : JSON.stringify(data),
-          });
+          const response = await fetch(url, {
+		  method: 'GET',
+		  headers: {
+		    'Content-Type': 'application/json'
+		  },
+	});
           if (response.status === 400) {
             // errorMessage.textContent = await response.text();
             // errorMessage.style.display = 'block';
