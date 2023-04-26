@@ -86,7 +86,7 @@ http.createServer(function (req, res)
 		// when complete POST data is received
 		req.on('end', () => {
 			pdata = qs.parse(pdata);
-			res.write ("The name is: "+ pdata['exercisename']);
+			res.write ("The name is: "+ pdata);
 			res.end();
 		});
 		
