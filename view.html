@@ -85,6 +85,19 @@ input[type="date"] {
 	const url = 'https://inspiredbyw3.herokuapp.com/exercise?' + params.toString();
 
 
+        const form = document.querySelector('form');
+    //   alert("got the form");
+      form.addEventListener('submit', async (event) => {
+        alert("in event listener");
+        event.preventDefault();
+
+        const formData = new FormData(form);
+        const data = {
+          name: formData.get('exercisename'),
+          date: formData.get('date'),
+          reps: formData.get('reps'),
+          sets: formData.get('sets'),
+        };
         try {
           await fetch(url, {
           method: 'GET',
@@ -98,7 +111,7 @@ input[type="date"] {
 // 		  method: 'GET',
 // 		  headers: {
 // 		    'Content-Type': 'application/json'
-// 		  },
+// 		},
 // 	});
 //           if (response.status === 400) {
 //             // errorMessage.textContent = await response.text();
@@ -117,7 +130,7 @@ input[type="date"] {
           console.error('Error submitting the form:', error);
         }
 //       });
-
+    });
     </script>
 <br> 
 
