@@ -58,32 +58,33 @@
 
     <div id="display"></div>
     <script>
-        const form = document.querySelector('form');
-        form.addEventListener('submit', async (event) => {
-            alert("in event listener");
-            event.preventDefault();
+    const form = document.querySelector('form');
+    form.addEventListener('submit', async (event) => {
+        alert("in event listener");
+        event.preventDefault();
 
-            const formData = new FormData(form);
-            const params = new URLSearchParams({
-                name: formData.get('exercisename'),
-                date: formData.get('date'),
-            });
+        const formData = new FormData(form);
+        const params = new URLSearchParams({
+            name: formData.get('exercisename'),
+            date: formData.get('date'),
+        });
 
-            const url = 'https://inspiredbyw3.herokuapp.com/exercise?' + params.toString();
+        const url = 'https://inspiredbyw3.herokuapp.com/exercise?' + params.toString();
 
-            fetch(url, {
-  method: 'GET',
-  headers: {
-    'Content-Type': 'application/json'
-  }
-}).then(response => {
-  console.log(response);
-  alert('Response received!');
-}).catch(error => {
-  console.error('Error submitting the form:', error);
-});
+        fetch(url, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(response => {
+            console.log(response);
+            alert('Response received!');
+        }).catch(error => {
+            console.error('Error submitting the form:', error);
+        });
+    });
+</script>
 
-    </script>
 
     <br> 
     <br> <br>
