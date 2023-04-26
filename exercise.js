@@ -30,6 +30,21 @@ app.get("/exercise", async function (req, res) {
     res.status(200).send(exercises);
 })
 
+app.get("/", (req, res) => {
+  // Send login page as response for GET requests to root path
+  res.sendFile(__dirname + "/login.html");
+});
+
+app.get("/login", (req, res) => {
+  // Send login page as response for GET requests to /login path
+  res.sendFile(__dirname + "/login.html");
+});
+
+app.get("/home", (req, res) => { 
+  // Send home page as response for GET requests to /home path
+  res.sendFile(__dirname + "/track.html");
+});
+
 // Endpoint to add an exercise as described by the user
 app.post("/exercise", async function (req, res) {
     let query = createQuery(req);
@@ -253,10 +268,7 @@ app.post("/contact", async (req, res) => {
     res.status(500).send("Error: " + err.message);
   }
     });
-app.get("/home", (req, res) => { 
-  // Send home page as response for GET requests to /track path
-  res.sendFile(__dirname + "/track.html");
-});
+
 
 // Starts the server
 app.listen(port, () => {
