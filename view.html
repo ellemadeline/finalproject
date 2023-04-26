@@ -71,12 +71,12 @@
 
         const url = 'https://inspiredbyw3.herokuapp.com/exercise?' + params.toString();
 
-        fetch(url, {
+        await fetch(url, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
             }
-        }).then(response => {
+        }).then(async function(response) {
             let information = await response.text();
             document.getElementById("display").innerHTML = information;
             alert('Response received!');
