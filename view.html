@@ -82,7 +82,15 @@ form.addEventListener('submit', async (event) => {
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
-        document.getElementById('display').innerHTML = await response.text();
+        let information = await response.text();
+        let str = "<h4> Your exercises </h4> <br> ";
+        for (let i = 0; i < response.length(); i++) {
+            str += "Name: " + information["name"] + " Date: " + information["date"] + " Reps: " + information["reps"] + " Sets: " + information["sets"];
+            str += "<button id="edit-btn">Edit</button> &nbsp";
+            str += "<button id="delete-btn">Delete</button>"
+            str += "<br> <br>";
+        }
+        document.getElementById('display').innerHTML = str;
     } catch (error) {
         console.error('Error submitting the form:', error);
     }
