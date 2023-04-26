@@ -18,16 +18,21 @@ http.createServer(function (req, res)
 
 		}
 
-	  else if (req.url == "/view.html")
-		{
-		 console.log("view");
-		   file = 'view.html';
-		   fs.readFile(file, 'utf8', function(err, txt) {
-			   res.writeHead(200, {'Content-Type': 'text/html'});
-			   res.write(txt);
-			   res.end();
-		   });
-		}
+	  else if (req.url == "/view.html") {
+    console.log("view");
+    file = 'view.html';
+    if (req.method == 'GET') {
+        res.writeHead(302, {'Location': '/exercise'});
+        res.end();
+    } else {
+        fs.readFile(file, 'utf8', function(err, txt) {
+            res.writeHead(200, {'Content-Type': 'text/html'});
+            res.write(txt);
+            res.end();
+        });
+    }
+}
+
 	 else if (req.url == "/index.html")
 		{
 	
@@ -66,27 +71,27 @@ http.createServer(function (req, res)
 			   res.end();
 		   });
 		}
-		else if (req.url == "/exercise") {
-			file = 'view.html';
-			fs.readFile(file, 'utf8', function(err, txt) {
-			   res.writeHead(200, {'Content-Type': 'text/html'});
-			   res.write(txt);
-			   res.end();
-			});
-		}
-		else if (req.url.includes('/exercise'))
-		{
+// 		else if (req.url == "/exercise") {
+// 			file = 'view.html';
+// 			fs.readFile(file, 'utf8', function(err, txt) {
+// 			   res.writeHead(200, {'Content-Type': 'text/html'});
+// 			   res.write(txt);
+// 			   res.end();
+// 			});
+// 		}
+// 		else if (req.url.includes('/exercise'))
+// 		{
 		   
-		}
-		else if (req.url == "/edit.html")
-		{
-		   file = 'edit.html';
-		   fs.readFile(file, 'utf8', function(err, txt) {
-			   res.writeHead(200, {'Content-Type': 'text/html'});
-			   res.write(txt);
-			   res.end();
-		   });
-		}
+// 		}
+// 		else if (req.url == "/edit.html")
+// 		{
+// 		   file = 'edit.html';
+// 		   fs.readFile(file, 'utf8', function(err, txt) {
+// 			   res.writeHead(200, {'Content-Type': 'text/html'});
+// 			   res.write(txt);
+// 			   res.end();
+// 		   });
+// 		}
 		else if (req.url == "/style.css")
 		{
 		   file = 'style.css';
