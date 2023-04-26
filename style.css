@@ -1,3 +1,9 @@
+
+#container{
+  text-align: center;
+
+}
+
 body {
         background-repeat: no-repeat;
         background-color: lightblue;
@@ -10,6 +16,20 @@ body {
 
 
 }
+h1{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+header #logo{
+  float:left;
+ margin-left: 10%;
+width: 12%;
+min-width: 130px;
+  }
+  header{
+display: flex;
+  flex-direction: column;
+ padding: 2%;
+  }
 
 p#why {
         display: block;
@@ -29,7 +49,7 @@ p#why {
         padding: 0%;
         overflow: hidden;
         background-color:#F7B040;
-        font-family:monospace;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         font-size:30px;
         width:100%;
         border: 2px solid darkgoldenrod;
@@ -51,7 +71,7 @@ p#why {
         background-color:lightblue;
       }
       a.active {
-        background-color:violet;
+        background-color:royalblue;
       }
 
       .tracker {
@@ -72,5 +92,8 @@ p#why {
 form {
         text-align: center;
 }
-    
-     
+label{
+  width: 135px;
+  display:inline-block;
+}
+  
