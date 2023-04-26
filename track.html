@@ -45,7 +45,7 @@ input[type="date"] {
       <li> <a href="view.html"> View Your Workout Plan </a></li>
     </ul>
   </nav>
-  <form method='post' action = "https://localhost:3000/exercise">
+  <form method='post' action = "/exercise">
     <h3>Add a Workout to Your Logbook!</h3>
    <label> Exercise Name  </label> <input type="text" name="exercisename" required>
     <br>    
@@ -77,7 +77,7 @@ input[type="date"] {
           other:formData.get('other')
         };
         try {
-          const response = await fetch('http://localhost:8080/exercise', {
+          const response = await fetch('/exercise', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
