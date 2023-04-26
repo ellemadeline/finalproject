@@ -7,21 +7,30 @@
         <link rel ="stylesheet" href = "style.css"/>
 </head>
 <body>
+    <header> 
+        <div id="container">
+            <img id="logo" src="logo.jpeg">
+          <h1> E4U!</h1> 
+         <h2 id="slogan"> Exercise Program Assistant</h2>
+        </div>
+    </header>
 	<!-- <h1>Search for Exercises</h1> -->
     <nav>
         <ul class="nav"> 
           <!-- <li>  <a href="index.html"> Home </a> </li> -->
           <li> <a href="track.html"> Track your Workouts </a></li>
-          <li> <a href="search.html"> Search for Exercises </a></li>
+          <li> <a class="active" href="search.html"> Search for Exercises </a></li>
 <!-- 	<li> <a href="edit.html"> Edit Your Workout </a></li> -->
       <li> <a href="view.html"> View Your Workout Plan </a></li>
 
     
         </ul>
       </nav>
+    
     <form>
+        <h3> Search by Muscle, Difficulty, and/or Type! Not all fields are required </h3>
         <p> 
-            Search by Muscle: 
+        Search by Muscle: 
             <select name="muscles" id="muscles">
                 <option value="select"> Select</option> 
                 <option value="abdominals"> Abdominals</option>
@@ -41,7 +50,7 @@
                 <option value="triceps">Triceps</option>
               </select>
             </br>   </br>
-            Search by Difficulty
+        Search by Difficulty 
         <select name="difficulty" id="difficulty">
             <option value="select"> Select</option> 
             <option value="beginner"> Beginner</option> 
