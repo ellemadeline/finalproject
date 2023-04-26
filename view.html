@@ -86,13 +86,12 @@ input[type="date"] {
 
 
         try {
-		try {
           await fetch(url, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json'
           },
-        }).then((response) => {
+        }).then(response => {
           alert(response.text());
         });
 //           const response = await fetch(url, {
@@ -114,10 +113,10 @@ input[type="date"] {
 //             alert( 'Thanks for registering!');
 //             successMessage.style.display = 'block';
 //           }
-        } catch (error) {
-          console.error('Error submitting the form:', error);
-        }
-      });
+//         } catch (error) {
+//           console.error('Error submitting the form:', error);
+//         }
+//       });
 
     </script>
 <br> 
