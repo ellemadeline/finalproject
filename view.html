@@ -104,7 +104,10 @@ data.forEach(obj => {
     i++;
     number++;
 });
-
+    if (str == "<h4> Your exercises </h4> <br> ") {
+        str = "<h4> Based on Your Search Criteria, no exercises found. </h4> <br> ";
+        str += "<h4> Want to add an exercise? &nbsp <a href='track'> Track your Workouts </a> </h4>";
+    }
     document.getElementById('display').innerHTML = str;
 
 
@@ -139,6 +142,7 @@ for (let j = 0; j < number; j++) {
             alert("got an error");
           } else if (response.status === 200) {
             alert("it went fine");
+            window.location.reload();
           } else {
             errorMessage.style.display = 'none';
             alert( 'Thanks for registering!');
@@ -154,7 +158,7 @@ for (let j = 0; j < number; j++) {
     editing.addEventListener('click', async (event) => {
         // alert("in event listner");
         event.preventDefault();
-        let adder = "<form method='put' action = '/exercise'>";
+        let adder = "<form id = 'editer' method='put' action = '/exercise'>";
         adder += "<h3>Please enter the new information for your exercise. All fields are required. </h3>";
         adder += "<label> Exercise Name  </label> <input type='text' name='exercisename' required> <br>";   
   adder += "<label> Date of Exercise </label>"
@@ -163,19 +167,19 @@ for (let j = 0; j < number; j++) {
   adder += "<label>  Number of reps per set: </label> <input type='text' name='reps' required> <br>";  
   adder += "<label>  Number of sets: </label> <input type='text' name='sets' required> <br>"
   adder += "<label>  Other information (optional): </label><input type='text' name = 'others'> <br> <br>"
-    adder += "<input class = 'tracker' type='submit' value='Update''> </form>";
+    adder += "<input class = 'tracker' type='submit' value='Update'> </form>";
     document.getElementById("changer").innerHTML = adder;
 
     obj_id = editing.getAttribute("class");
 
 
-    const form = document.querySelector('form');
+    const formtwo = document.getElementById('editer');
       alert("got the form");
-      form.addEventListener('submit', async (event) => {
+    formtwo.addEventListener('submit', async (event) => {
         event.preventDefault();
         alert("in event listener");
 
-        const formData = new FormData(form);
+        const formData = new FormData(formtwo);
         const data = {
           id: obj_id,
           name: formData.get('exercisename'),
@@ -185,7 +189,7 @@ for (let j = 0; j < number; j++) {
           other:formData.get('other')
         };
 
-        
+
         try {
           const response = await fetch('/exercise', {
             method: 'PUT',
@@ -201,6 +205,7 @@ for (let j = 0; j < number; j++) {
             alert("got an error");
           } else if (response.status === 200) {
             alert("it went fine");
+            window.location.reload();
           } else {
             errorMessage.style.display = 'none';
             alert( 'Thanks for registering!');
@@ -212,7 +217,6 @@ for (let j = 0; j < number; j++) {
 
 
       });
-
 
 
 });
@@ -229,35 +233,7 @@ for (let j = 0; j < number; j++) {
 
 
 
-// editing.addEventListener('click', async (event) => {
 
-
-// //     const formData = new FormData(form);
-// //     const params = new URLSearchParams({
-// //         name: formData.get('exercisename'),
-// //         date: formData.get('date'),
-// //     });
-
-// //     const url = '/exercise?' + params.toString();
-// //     // alert("about to try");
-// //     try {
-// //         const response = await fetch(url, {
-// //             method: 'GET',
-// //             headers: {
-// //                 'Content-Type': 'application/json'
-// //             }
-// //         });
-
-// //         if (!response.ok) {
-// //             throw new Error('Network response was not ok');
-// //         }
-
-// // } catch (error) {
-// //         console.error('Error submitting the form:', error);
-// //     }
-
-
-// });
 
 
 
