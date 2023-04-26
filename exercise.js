@@ -217,6 +217,7 @@ app.post("/login", async (req, res) => {
   }
 });
 
+
 app.post("/contact", async (req, res) => {
     console.log("in fetch");
     // Extract the username and password from the request body
@@ -252,6 +253,10 @@ app.post("/contact", async (req, res) => {
     res.status(500).send("Error: " + err.message);
   }
     });
+app.get("/track", (req, res) => { 
+  // Send home page as response for GET requests to /track path
+  res.sendFile(__dirname + "/track.html");
+});
 
 // Starts the server
 app.listen(port, () => {
