@@ -40,7 +40,7 @@ app.get("/login", (req, res) => {
   res.sendFile(__dirname + "/login.html");
 });
 
-app.get("/home", (req, res) => { 
+app.get("/track", (req, res) => { 
   // Send home page as response for GET requests to /home path
   res.sendFile(__dirname + "/track.html");
 });
