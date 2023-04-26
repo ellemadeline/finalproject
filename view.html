@@ -60,6 +60,7 @@
     <script>
     const form = document.querySelector('form');
 form.addEventListener('submit', async (event) => {
+    alert("In event listener);
     event.preventDefault();
 
     const formData = new FormData(form);
@@ -69,7 +70,7 @@ form.addEventListener('submit', async (event) => {
     });
 
     const url = 'https://inspiredbyw3.herokuapp.com/exercise?' + params.toString();
-
+    alert("about to try");
     try {
         const response = await fetch(url, {
             method: 'GET',
