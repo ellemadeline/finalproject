@@ -84,7 +84,7 @@ form.addEventListener('submit', async (event) => {
         }
         let information = await response.text();
         let str = "<h4> Your exercises </h4> <br> ";
-        for (let i = 0; i < response.length; i++) {
+        for (let i = 0; i < information.length; i++) {
             str += "Name: " + information["name"] + " Date: " + information["date"] + " Reps: " + information["reps"] + " Sets: " + information["sets"];
             str += "<button id='edit-btn'>Edit</button> &nbsp";
             str += "<button id='delete-btn'>Delete</button>"
