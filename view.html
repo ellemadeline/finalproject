@@ -59,31 +59,36 @@
     <div id="display"></div>
     <script>
     const form = document.querySelector('form');
-    form.addEventListener('submit', async (event) => {
-        alert("in event listener");
-        event.preventDefault();
+form.addEventListener('submit', async (event) => {
+    event.preventDefault();
 
-        const formData = new FormData(form);
-        const params = new URLSearchParams({
-            name: formData.get('exercisename'),
-            date: formData.get('date'),
-        });
+    const formData = new FormData(form);
+    const params = new URLSearchParams({
+        name: formData.get('exercisename'),
+        date: formData.get('date'),
+    });
 
-        const url = 'https://inspiredbyw3.herokuapp.com/exercise?' + params.toString();
+    const url = 'https://inspiredbyw3.herokuapp.com/exercise?' + params.toString();
 
-        await fetch(url, {
+    try {
+        const response = await fetch(url, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
             }
-        }).then(async function(response) {
-            let information = await response.text();
-            document.getElementById("display").innerHTML = information;
-            alert('Response received!');
-        }).catch(error => {
-            console.error('Error submitting the form:', error);
         });
-    });
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+
+        const data = await response.text();
+        document.getElementById('display').innerHTML = data;
+    } catch (error) {
+        console.error('Error submitting the form:', error);
+    }
+});
+
 </script>
 
 
