@@ -74,24 +74,23 @@ http.createServer(function (req, res)
 			   res.end();
 			});
 		}
-		else if (req.url.includes('/exercise'))
-		{
-			 res.writeHead(200, {'Content-Type':'text/html'});
-		 res.write ("Process the form<br>");
-		 pdata = "";
-		 req.on('data', data => {
-           	pdata += data.toString();
-         	});
+		else if (req.url.includes('/exercise')) {
+    res.writeHead(200, {'Content-Type':'text/html'});
+    res.write("Process the form<br>");
+    pdata = "";
+    req.on('data', data => {
+        pdata += data.toString();
+    });
 
-		// when complete POST data is received
-		req.on('end', () => {
-			pdata = qs.parse(pdata);
-			res.write ("The name is: "+ pdata);
-			res.end();
-		});
-		
-		   
-		}
+    // when complete POST data is received
+    req.on('end', () => {
+        pdata = qs.parse(pdata);
+        alert("this is the pdata: " + pdata);
+        res.write("The name is: "+ pdata.name); // Replace `data` with `pdata`
+        res.end();
+    });
+}
+
 		else if (req.url == "/edit.html")
 		{
 		   file = 'edit.html';
