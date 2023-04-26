@@ -253,7 +253,7 @@ app.post("/contact", async (req, res) => {
     res.status(500).send("Error: " + err.message);
   }
     });
-app.get("/track", (req, res) => { 
+app.get("/home", (req, res) => { 
   // Send home page as response for GET requests to /track path
   res.sendFile(__dirname + "/track.html");
 });
