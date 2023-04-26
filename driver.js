@@ -82,14 +82,14 @@ http.createServer(function (req, res)
 //         pdata += data.toString();
 //     });
 
-    // when complete POST data is received
-    req.on('end', () => {
-        pdata = qs.parse(pdata);
-        alert("this is the pdata: " + pdata);
-        res.write("The name is: "+ pdata.name); // Replace `data` with `pdata`
-        res.end();
-    });
-}
+//     // when complete POST data is received
+//     req.on('end', () => {
+//         pdata = qs.parse(pdata);
+//         alert("this is the pdata: " + pdata);
+//         res.write("The name is: "+ pdata.name); // Replace `data` with `pdata`
+//         res.end();
+//     });
+// }
 
 		else if (req.url == "/edit.html")
 		{
