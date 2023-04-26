@@ -77,8 +77,8 @@
                 'Content-Type': 'application/json'
             }
         }).then(response => {
-            console.log(response.text());
-            document.getElementById("display").innerHTML = response.text();
+            let information = await response.text();
+            document.getElementById("display").innerHTML = information;
             alert('Response received!');
         }).catch(error => {
             console.error('Error submitting the form:', error);
