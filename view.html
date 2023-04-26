@@ -86,25 +86,34 @@ input[type="date"] {
 
 
         try {
-          const response = await fetch(url, {
-		  method: 'GET',
-		  headers: {
-		    'Content-Type': 'application/json'
-		  },
-	});
-          if (response.status === 400) {
-            // errorMessage.textContent = await response.text();
-            // errorMessage.style.display = 'block';
-            // successMessage.style.display = 'none';
-            alert("got an error");
-          } else if (response.status === 200) {
-            alert("it went fine");
-        	document.getElementById("display").innerHTML = response.text();
-          } else {
-            errorMessage.style.display = 'none';
-            alert( 'Thanks for registering!');
-            successMessage.style.display = 'block';
-          }
+		try {
+          await fetch(url, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+        }).then((response) => {
+          alert(response.text());
+        });
+//           const response = await fetch(url, {
+// 		  method: 'GET',
+// 		  headers: {
+// 		    'Content-Type': 'application/json'
+// 		  },
+// 	});
+//           if (response.status === 400) {
+//             // errorMessage.textContent = await response.text();
+//             // errorMessage.style.display = 'block';
+//             // successMessage.style.display = 'none';
+//             alert("got an error");
+//           } else if (response.status === 200) {
+//             alert("it went fine");
+//         	document.getElementById("display").innerHTML = response.text();
+//           } else {
+//             errorMessage.style.display = 'none';
+//             alert( 'Thanks for registering!');
+//             successMessage.style.display = 'block';
+//           }
         } catch (error) {
           console.error('Error submitting the form:', error);
         }
