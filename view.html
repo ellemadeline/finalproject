@@ -46,21 +46,22 @@
 
     <div id="whole">
         <form method="get" action="/exercise">
-            <h3>View Your Current Workouts! Please enter the given search criteria </h3>
-            <label> Exercise Name </label>  <input type="text" name="exercisename"> 
+            <h3>View Your Current Workouts! Please enter the given search criteria. Both fields are required. </h3>
+            <label> Exercise Name </label>  <input type="text" name="exercisename" required> 
             <br>    
             <label>Date of Exercise</label>
-            <input type="date" name="date">
+            <input type="date" name="date" required>
             <br>
             <input class="tracker" type="submit" value="Get Exercises!">
         </form>
     </div>
 
     <div id="display"></div>
+    <div id = "changer"> </div>
     <script>
     const form = document.querySelector('form');
 form.addEventListener('submit', async (event) => {
-    // alert("In event listener");
+    alert("In event listener");
     event.preventDefault();
 
     const formData = new FormData(form);
@@ -68,6 +69,7 @@ form.addEventListener('submit', async (event) => {
         name: formData.get('exercisename'),
         date: formData.get('date'),
     });
+    alert("This is the typeof " + typeof(formData.get('exercisename')));
 
     const url = '/exercise?' + params.toString();
     // alert("about to try");
@@ -83,18 +85,181 @@ form.addEventListener('submit', async (event) => {
             throw new Error('Network response was not ok');
         }
         let information = await response.text();
-        let str = "<h4> Your exercises </h4> <br> ";
-        for (let i = 0; i < information.length; i++) {
-            str += "Name: " + information["name"] + " Date: " + information["date"] + " Reps: " + information["reps"] + " Sets: " + information["sets"];
-            str += "<button id='edit-btn'>Edit</button> &nbsp";
-            str += "<button id='delete-btn'>Delete</button>"
-            str += "<br> <br>";
+
+const data = JSON.parse(information);
+let str = "<h4> Your exercises </h4> <br> ";
+
+let i = 0;
+let number = 0;
+data.forEach(obj => {
+  const name = obj.name;
+  const date = obj.date;
+  const reps = obj.reps;
+  const sets = obj.sets;
+  const holder = obj._id;
+    str += "Name: " + name + " Date: " + date + " Reps: " + reps + " Sets: " + sets + "&nbsp";
+    str += "<button class=" + holder + " id='edit-btn" + i + "'>Edit</button> &nbsp";
+    str += "<button class=" + holder + " id='delete-btn" + i + "'>Delete</button>"
+    str += "<br> <br>";
+    i++;
+    number++;
+});
+
+    document.getElementById('display').innerHTML = str;
+
+
+
+
+for (let j = 0; j < number; j++) {
+    edit = "edit-btn" + j;
+    del = "delete-btn" + j;
+    editing = document.getElementById(edit);
+    deleting = document.getElementById(del);
+    deleting.addEventListener('click', async (event) => {
+        // alert("in event listner");
+        event.preventDefault();
+
+    obj_id = deleting.getAttribute("class");
+    const data = {
+          id: obj_id
+    };
+   
+    try {
+          const response = await fetch('/exercise', {
+            method: 'DELETE',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body : JSON.stringify(data),
+          });
+          if (response.status === 400) {
+            // errorMessage.textContent = await response.text();
+            // errorMessage.style.display = 'block';
+            // successMessage.style.display = 'none';
+            alert("got an error");
+          } else if (response.status === 200) {
+            alert("it went fine");
+          } else {
+            errorMessage.style.display = 'none';
+            alert( 'Thanks for registering!');
+            successMessage.style.display = 'block';
+          }
+        } catch (error) {
+          console.error('Error submitting the form:', error);
         }
-        document.getElementById('display').innerHTML = str;
+
+
+
+});
+    editing.addEventListener('click', async (event) => {
+        // alert("in event listner");
+        event.preventDefault();
+        let adder = "<form method='put' action = '/exercise'>";
+        adder += "<h3>Please enter the new information for your exercise. All fields are required. </h3>";
+        adder += "<label> Exercise Name  </label> <input type='text' name='exercisename' required> <br>";   
+  adder += "<label> Date of Exercise </label>"
+    adder += "<input type='date' name='date' required>";
+    adder += "<br>"; 
+  adder += "<label>  Number of reps per set: </label> <input type='text' name='reps' required> <br>";  
+  adder += "<label>  Number of sets: </label> <input type='text' name='sets' required> <br>"
+  adder += "<label>  Other information (optional): </label><input type='text' name = 'others'> <br> <br>"
+    adder += "<input class = 'tracker' type='submit' value='Update''> </form>";
+    document.getElementById("changer").innerHTML = adder;
+
+    obj_id = editing.getAttribute("class");
+
+
+    const form = document.querySelector('form');
+      alert("got the form");
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        alert("in event listener");
+
+        const formData = new FormData(form);
+        const data = {
+          id: obj_id,
+          name: formData.get('exercisename'),
+          date: formData.get('date'),
+          reps: formData.get('reps'),
+          sets: formData.get('sets'),
+          other:formData.get('other')
+        };
+
+        
+        try {
+          const response = await fetch('/exercise', {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body : JSON.stringify(data),
+          });
+          if (response.status === 400) {
+            // errorMessage.textContent = await response.text();
+            // errorMessage.style.display = 'block';
+            // successMessage.style.display = 'none';
+            alert("got an error");
+          } else if (response.status === 200) {
+            alert("it went fine");
+          } else {
+            errorMessage.style.display = 'none';
+            alert( 'Thanks for registering!');
+            successMessage.style.display = 'block';
+          }
+        } catch (error) {
+          console.error('Error submitting the form:', error);
+        }
+
+
+      });
+
+
+
+});
+
+
+
+}
     } catch (error) {
         console.error('Error submitting the form:', error);
     }
 });
+
+
+
+
+
+// editing.addEventListener('click', async (event) => {
+
+
+// //     const formData = new FormData(form);
+// //     const params = new URLSearchParams({
+// //         name: formData.get('exercisename'),
+// //         date: formData.get('date'),
+// //     });
+
+// //     const url = '/exercise?' + params.toString();
+// //     // alert("about to try");
+// //     try {
+// //         const response = await fetch(url, {
+// //             method: 'GET',
+// //             headers: {
+// //                 'Content-Type': 'application/json'
+// //             }
+// //         });
+
+// //         if (!response.ok) {
+// //             throw new Error('Network response was not ok');
+// //         }
+
+// // } catch (error) {
+// //         console.error('Error submitting the form:', error);
+// //     }
+
+
+// });
+
+
 
 </script>
 
@@ -103,3 +268,4 @@ form.addEventListener('submit', async (event) => {
     <br> <br>
 </body>
 </html>
+
