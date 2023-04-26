@@ -61,11 +61,7 @@ input[type="date"] {
     <br>    
 <label>Date of Exercise</label>
     <input type="date" name="date">
-    <br>     
-<label> Number of reps per set: </label> <input type="text" name="reps">
-    <br>   
-<label>  Number of sets: </label> <input type="text" name="sets">
-    <br>  
+    <br>
   <input class = "tracker" type="submit" value="Get Exercises!">
 </form>
 </div>
@@ -83,8 +79,6 @@ input[type="date"] {
         const data = {
           name: formData.get('exercisename'),
           date: formData.get('date'),
-          reps: formData.get('reps'),
-          sets: formData.get('sets'),
         };
         try {
           const response = await fetch('/exercise', {
