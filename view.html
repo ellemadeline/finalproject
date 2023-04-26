@@ -11,39 +11,70 @@
 		#display {
 			text-align:center;
 		}
+        form {
+    display: flex;
+    flex-direction: column;
+    /* align-items: flex-start; */
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+label {
+   margin-bottom: 10px;
+}
+
+input[type="date"] {
+  margin-bottom: 10px;
+  width: 10%;
+  box-sizing: border-box;
+}
+
 	</style>
 
 <body>
+    <header> 
+        <div id="container">
+          <img id="logo" src="logo.jpeg">
+          <h1> E4U!</h1> 
+         <h2 id="slogan"> Exercise Program Assistant</h2>
+        </div>
+    </header>
 <!-- <h2> Exercise for your Health!</h2> -->
 <nav>
     <ul class="nav"> 
       <li> <a href="track.html"> Track your Workouts </a></li>
       <li> <a href="search.html"> Search for Exercises </a></li>
 <!--       <li> <a href="edit.html"> Edit Your Workout </a></li> -->
-      <li> <a href="view.html"> View Your Workout Plan </a></li>
+      <li> <a class="active" href="view.html"> View Your Workout Plan </a></li>
 
 
     </ul>
   </nav>
+  <div id = "whole">
+
+ 
   <form method='get' action = "https://localhost:3000/exercise">
     <h3>View Your Current Workouts! Please enter the given search criteria </h3>
-    Exercise Name  <input type="text" name="exercisename">
-    <br>     <br>
-    Date of Exercise
+    <label> Exercise Name </label>  <input type="text" name="exercisename"> 
+    <br>    
+<label>Date of Exercise</label>
     <input type="date" name="date">
-    <br>     <br>
-    Number of reps per set: <input type="text" name="reps">
-    <br>     <br>
-    Number of sets: <input type="text" name="sets">
-    <br>   <br>
-    <input class = "tracker" type="submit" value="Get Exercises!">
+    <br>     
+<label> Number of reps per set: </label> <input type="text" name="reps">
+    <br>   
+<label>  Number of sets: </label> <input type="text" name="sets">
+    <br>  
+  <input class = "tracker" type="submit" value="Get Exercises!">
 </form>
+</div>
 
 <!-- <div id = "display"> </div> -->
 <script>
      
       const form = document.querySelector('form');
-      alert("got the form");
+    //   alert("got the form");
       form.addEventListener('submit', async (event) => {
         alert("in event listener");
         event.preventDefault();
