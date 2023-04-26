@@ -66,15 +66,17 @@ http.createServer(function (req, res)
 			   res.end();
 		   });
 		}
+		else if (req.url == "/exercise") {
+			file = 'view.html';
+			fs.readFile(file, 'utf8', function(err, txt) {
+			   res.writeHead(200, {'Content-Type': 'text/html'});
+			   res.write(txt);
+			   res.end();
+			});
+		}
 		else if (req.url.includes('/exercise'))
 		{
-// 		   file = 'view.html';
-// 		   fs.readFile(file, 'utf8', function(err, txt) {
-// 			   res.writeHead(200, {'Content-Type': 'text/html'});
-// 			   res.write(txt);
-// 			   res.end();
-// 		   });
-			return;
+		   
 		}
 		else if (req.url == "/edit.html")
 		{
