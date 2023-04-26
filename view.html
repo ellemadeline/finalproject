@@ -55,7 +55,7 @@ input[type="date"] {
   <div id = "whole">
 
  
-  <form method='get' action = "https://localhost:3000/exercise">
+  <form method='get' action = "/exercise">
     <h3>View Your Current Workouts! Please enter the given search criteria </h3>
     <label> Exercise Name </label>  <input type="text" name="exercisename"> 
     <br>    
@@ -87,7 +87,7 @@ input[type="date"] {
           sets: formData.get('sets'),
         };
         try {
-          const response = await fetch('http://localhost:8080/exercise', {
+          const response = await fetch('/exercise', {
             method: 'GET',
             headers: {
               'Content-Type': 'application/json'
