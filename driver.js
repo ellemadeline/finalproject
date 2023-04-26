@@ -28,6 +28,16 @@ http.createServer(function (req, res)
 			   res.end();
 		   });
 		}
+	 else if (req.url == "/index.html")
+		{
+	
+		   file = 'index.html';
+		   fs.readFile(file, 'utf8', function(err, txt) {
+			   res.writeHead(200, {'Content-Type': 'text/html'});
+			   res.write(txt);
+			   res.end();
+		   });
+		}
 		else if (req.url == "/search.html")
 		{
 		 console.log("search");
