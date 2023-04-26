@@ -71,19 +71,18 @@
 
             const url = 'https://inspiredbyw3.herokuapp.com/exercise?' + params.toString();
 
-            try {
-                await fetch(url, {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                }).then(response => {
-                    alert(response.text());
-                });
-            } catch (error) {
-                console.error('Error submitting the form:', error);
-            }
-        });
+            fetch(url, {
+  method: 'GET',
+  headers: {
+    'Content-Type': 'application/json'
+  }
+}).then(response => {
+  console.log(response);
+  alert('Response received!');
+}).catch(error => {
+  console.error('Error submitting the form:', error);
+});
+
     </script>
 
     <br> 
