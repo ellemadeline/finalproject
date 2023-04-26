@@ -78,6 +78,7 @@
             }
         }).then(response => {
             console.log(response.text());
+            document.getElementById("display").innerHTML = response.text();
             alert('Response received!');
         }).catch(error => {
             console.error('Error submitting the form:', error);
