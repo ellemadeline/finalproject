@@ -96,8 +96,7 @@ form.addEventListener('submit', async (event) => {
         let information = await response.text();
 
 const data = JSON.parse(information);
-let str = "<h3> Your Exercises </h3> <br> <table>";
-    str += "<tr> <th> Name </th> <th> Date </th> <th> Reps </th> <th> Sets </th> <th> Edit Exercise</th> <th> Delete Exercise </th></tr>";
+let str = "<h3> Your Exercises </h3> <br> <table> <tr> <th> Name </th> <th> Date </th> <th> Reps </th> <th> Sets </th> <th> Edit Exercise</th> <th> Delete Exercise </th></tr>";
      
 
 let i = 0;
@@ -120,9 +119,9 @@ data.forEach(obj => {
         str = "<h3> Based on Your Search Criteria, no exercises found. </h3> <br> ";
         str += "<h3> Want to add an exercise? &nbsp <a href='track'> Track your Workouts </a> </h3>";
     }
-        else {
+     else {
             str += "</table>";
-        }
+      }
     document.getElementById('display').innerHTML = str;
 
 
@@ -267,7 +266,7 @@ for (let j = 0; j < number; j++) {
             alert("got an error");
           } else if (response.status === 200) {
             console.log("it went fine");
-//             window.location.reload();
+            window.location.reload();
           } else {
             errorMessage.style.display = 'none';
             alert( 'Thanks for registering!');
