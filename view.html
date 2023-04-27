@@ -175,13 +175,13 @@ for (let j = 0; j < number; j++) {
         event.preventDefault();
         let adder = "<form id = 'editer' method='put' action = '/exercise'>";
         adder += "<h3>Please enter the new information for your exercise. Only one field is required. </h3>";
-        adder += "<label> Exercise Name  </label> <input type='text' name='exercisename'> <br>";   
+        adder += "<label> Exercise Name  </label> <input type='text' name='exercisename' value = ''> <br>";   
   adder += "<label> Date of Exercise </label>"
-    adder += "<input type='date' name='date'>";
+    adder += "<input type='date' name='date' value = ''>";
     adder += "<br>"; 
-  adder += "<label>  Number of reps per set: </label> <input type='text' name='reps' > <br>";  
-  adder += "<label>  Number of sets: </label> <input type='text' name='sets' > <br>"
-  adder += "<label>  Other information (optional): </label><input type='text' name = 'others'> <br> <br>"
+  adder += "<label>  Number of reps per set: </label> <input type='text' name='reps' value = ''> <br>";  
+  adder += "<label>  Number of sets: </label> <input type='text' name='sets' value = '' > <br>"
+  adder += "<label>  Other information (optional): </label><input type='text' name = 'others' value = ''> <br> <br>"
     adder += "<input class = 'tracker' type='submit' value='Update'> </form>";
     document.getElementById("changer").innerHTML = adder;
 
@@ -196,7 +196,7 @@ for (let j = 0; j < number; j++) {
         console.log(inputs.length);
           for (let i = 0; i < inputs.length; i++) {
               console.log(typeof(inputs[i].value));
-            if (inputs[i].value != "") {
+            if (Boolean(inputs[i].value)) {
               hasFilledField = true;
               break;
             }
