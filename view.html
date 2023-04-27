@@ -197,15 +197,18 @@ for (let j = 0; j < number; j++) {
           for (let i = 0; i < inputs.length; i++) {
               console.log(typeof(inputs[i].value));
             if (inputs[i].value == "") {
+                alert("In correct case " + i);
               hasFilledField = false;
              
             }
               else {
+                  alert("in wrong case" + i);
                   hasFilledField = true;
                   break;
                   
               }
           }
+        alert("This is hasFilledField value: " + hasFilledField);
           if (!hasFilledField) {
               console.log("good case");
             alert('Please fill out at least one field before submitting the form.');
