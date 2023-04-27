@@ -70,7 +70,7 @@ form.addEventListener('submit', async (event) => {
     });
 
     const url = '/exercise?' + params.toString();
-    // alert("about to try");
+    alert("about to try");
     try {
         const response = await fetch(url, {
             method: 'GET',
@@ -96,7 +96,7 @@ data.forEach(obj => {
   const reps = obj.reps;
   const sets = obj.sets;
   const holder = obj._id;
-    str += "<tr>;
+    str += "<tr>";
     str += "<th>" + "Name: " + name + "</th> <th>" + " Date: " + date + "</th> <th>" + " Reps: " + reps + "</th> <th>" + " Sets: " + sets + "</th>";
     str += "<th>" + "<button class=" + holder + " id='edit-btn" + i + "'>Edit</button> </th>";
     str += "<th>" + "<button class=" + holder + " id='delete-btn" + i + "'>Delete</button> </th>";
