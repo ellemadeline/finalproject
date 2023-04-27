@@ -172,10 +172,8 @@ for (let j = 0; j < number; j++) {
 
 
     const formtwo = document.getElementById('editer');
-      alert("got the form");
     formtwo.addEventListener('submit', async (event) => {
         event.preventDefault();
-        alert("in event listener");
 
         const formData = new FormData(formtwo);
         const data = {
