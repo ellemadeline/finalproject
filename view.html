@@ -179,8 +179,7 @@ for (let j = 0; j < number; j++) {
     adder += "<input type='date' name='date' value = ''>";
     adder += "<br>"; 
   adder += "<label>  Number of reps per set: </label> <input type='text' name='reps' value = ''> <br>";  
-  adder += "<label>  Number of sets: </label> <input type='text' name='sets' value = '' > <br>"
-  adder += "<label>  Other information (optional): </label><input type='text' name = 'others' value = ''> <br> <br>"
+  adder += "<label>  Number of sets: </label> <input type='text' name='sets' value = '' > <br> <br>"
     adder += "<input class = 'tracker' type='submit' value='Update'> </form>";
     document.getElementById("changer").innerHTML = adder;
 
@@ -220,7 +219,6 @@ for (let j = 0; j < number; j++) {
         let da = formData.get('date');
         let re = formData.get('reps');
         let se = formData.get('sets');
-        let oth = formData.get('other');
         if (ex == "") {
             ex = undefined;
             
@@ -236,18 +234,12 @@ for (let j = 0; j < number; j++) {
             se = undefined;
             
         }
-        if (oth == "") {
-            oth = undefined;
-            
-            
-        }
         const data = {
           id: obj_id,
           name: ex,
           date: da,
           reps: re,
           sets: se,
-          other: oth
         };
 
 
