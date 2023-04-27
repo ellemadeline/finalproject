@@ -82,7 +82,6 @@ form.addEventListener('submit', async (event) => {
     });
 
     const url = '/exercise?' + params.toString();
-    alert("about to try");
     try {
         const response = await fetch(url, {
             method: 'GET',
