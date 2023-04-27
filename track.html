@@ -91,6 +91,7 @@ input[type="date"] {
             alert("got an error");
           } else if (response.status === 200) {
             console.log("it went fine");
+		window.location.reload();
           } else {
             errorMessage.style.display = 'none';
             alert( 'Thanks for registering!');
