@@ -96,7 +96,8 @@ form.addEventListener('submit', async (event) => {
         let information = await response.text();
 
 const data = JSON.parse(information);
-let str = "<h4> Your exercises </h4> <br> <table>";
+let str = "<h3> Your Exercises </h3> <br> <table>";
+    str += "<tr> <th> Name </th> <th> Date </th> <th> Reps </th> <th> Sets </th> </tr>";
      
 
 let i = 0;
@@ -108,16 +109,16 @@ data.forEach(obj => {
   const sets = obj.sets;
   const holder = obj._id;
     str += "<tr>";
-    str += "<th>" + "Name: " + name + "</th> <th>" + " Date: " + date + "</th> <th>" + " Reps: " + reps + "</th> <th>" + " Sets: " + sets + "</th>";
+    str += "<th>" + name + "</th> <th>" + date + "</th> <th>" + reps + "</th> <th>" + sets + "</th>";
     str += "<th>" + "<button class=" + holder + " id='edit-btn" + i + "'>Edit</button> </th>";
     str += "<th>" + "<button class=" + holder + " id='delete-btn" + i + "'>Delete</button> </th>";
     str += "</tr> <br> <br>";
     i++;
     number++;
 });
-    if (str == "<h4> Your exercises </h4> <br> <table>") {
-        str = "<h4> Based on Your Search Criteria, no exercises found. </h4> <br> ";
-        str += "<h4> Want to add an exercise? &nbsp <a href='track'> Track your Workouts </a> </h4>";
+    if (str == "<h3> Your Exercises </h3> <br> <table> <tr> <th> Name </th> <th> Date </th> <th> Reps </th> <th> Sets </th> </tr>") {
+        str = "<h3> Based on Your Search Criteria, no exercises found. </h3> <br> ";
+        str += "<h3> Want to add an exercise? &nbsp <a href='track'> Track your Workouts </a> </h3>";
     }
         else {
             str += "</table>";
