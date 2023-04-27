@@ -196,22 +196,15 @@ for (let j = 0; j < number; j++) {
         console.log(inputs.length);
           for (let i = 0; i < inputs.length; i++) {
               console.log(typeof(inputs[i].value));
-              if (inputs[i].value == "") {
-                  alert("empty string");
-              }
-              if (inputs[i].value == undefined) {
-                  alert("undefined");
-              }
-              if (inputs[i].value == null) {
-                  alert("null");
-              }
-              if (inputs[i].value == '') {
-                  alert("single quote");
-              }
-            if (Boolean(inputs[i].value)) {
-              hasFilledField = true;
-              break;
+            if (inputs[i].value == "") {
+              hasFilledField = false;
+             
             }
+              else {
+                  hasFilledField = true;
+                  break;
+                  
+              }
           }
           if (!hasFilledField) {
               console.log("good case");
