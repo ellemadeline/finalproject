@@ -85,7 +85,8 @@ form.addEventListener('submit', async (event) => {
         let information = await response.text();
 
 const data = JSON.parse(information);
-let str = "<h4> Your exercises </h4> <br> ";
+let str = "<h4> Your exercises </h4> <br> <table>";
+     
 
 let i = 0;
 let number = 0;
@@ -95,17 +96,21 @@ data.forEach(obj => {
   const reps = obj.reps;
   const sets = obj.sets;
   const holder = obj._id;
-    str += "Name: " + name + " Date: " + date + " Reps: " + reps + " Sets: " + sets + "&nbsp";
-    str += "<button class=" + holder + " id='edit-btn" + i + "'>Edit</button> &nbsp";
-    str += "<button class=" + holder + " id='delete-btn" + i + "'>Delete</button>"
-    str += "<br> <br>";
+    str += "<tr>;
+    str += "<th>" + "Name: " + name + "</th> <th>" + " Date: " + date + "</th> <th>" + " Reps: " + reps + "</th> <th>" + " Sets: " + sets + "</th>";
+    str += "<th>" + "<button class=" + holder + " id='edit-btn" + i + "'>Edit</button> </th>";
+    str += "<th>" + "<button class=" + holder + " id='delete-btn" + i + "'>Delete</button> </th>";
+    str += "</tr> <br> <br>";
     i++;
     number++;
 });
-    if (str == "<h4> Your exercises </h4> <br> ") {
+    if (str == "<h4> Your exercises </h4> <br> <table>") {
         str = "<h4> Based on Your Search Criteria, no exercises found. </h4> <br> ";
         str += "<h4> Want to add an exercise? &nbsp <a href='track'> Track your Workouts </a> </h4>";
     }
+        else {
+            str += "</table>";
+        }
     document.getElementById('display').innerHTML = str;
 
 
