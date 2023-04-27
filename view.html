@@ -162,13 +162,13 @@ for (let j = 0; j < number; j++) {
         // alert("in event listner");
         event.preventDefault();
         let adder = "<form id = 'editer' method='put' action = '/exercise'>";
-        adder += "<h3>Please enter the new information for your exercise. All fields are required. </h3>";
-        adder += "<label> Exercise Name  </label> <input type='text' name='exercisename' required> <br>";   
+        adder += "<h3>Please enter the new information for your exercise. Only one field is required. </h3>";
+        adder += "<label> Exercise Name  </label> <input type='text' name='exercisename'> <br>";   
   adder += "<label> Date of Exercise </label>"
-    adder += "<input type='date' name='date' required>";
+    adder += "<input type='date' name='date'>";
     adder += "<br>"; 
-  adder += "<label>  Number of reps per set: </label> <input type='text' name='reps' required> <br>";  
-  adder += "<label>  Number of sets: </label> <input type='text' name='sets' required> <br>"
+  adder += "<label>  Number of reps per set: </label> <input type='text' name='reps' > <br>";  
+  adder += "<label>  Number of sets: </label> <input type='text' name='sets' > <br>"
   adder += "<label>  Other information (optional): </label><input type='text' name = 'others'> <br> <br>"
     adder += "<input class = 'tracker' type='submit' value='Update'> </form>";
     document.getElementById("changer").innerHTML = adder;
@@ -179,15 +179,53 @@ for (let j = 0; j < number; j++) {
     const formtwo = document.getElementById('editer');
     formtwo.addEventListener('submit', async (event) => {
         event.preventDefault();
-
+        let hasFilledField = false;
+        let inputs = formtwo.getElementsByTagName('input');
+          for (let i = 0; i < inputs.length; i++) {
+            if (inputs[i].value !== '') {
+              hasFilledField = true;
+              break;
+            }
+          }
+          if (!hasFilledField) {
+            alert('Please fill out at least one field before submitting the form.');
+            event.preventDefault();
+          }
+        
+        
         const formData = new FormData(formtwo);
+        let ex = formData.get('exercisename');
+        let da = formData.get('date');
+        let re = formData.get('reps');
+        let se = formData.get('sets');
+        let oth = formData.get('other');
+        if (ex == "") {
+            ex = undefined;
+            
+        }
+        if (da == "") {
+            da = undefined;
+        }
+        if (re == "") {
+            re = undefined;
+            
+        }
+        if (se == "") {
+            se = undefined;
+            
+        }
+        if (oth == "") {
+            oth = undefined;
+            
+            
+        }
         const data = {
           id: obj_id,
-          name: formData.get('exercisename'),
-          date: formData.get('date'),
-          reps: formData.get('reps'),
-          sets: formData.get('sets'),
-          other:formData.get('other')
+          name: ex,
+          date: da,
+          reps: re,
+          sets: se,
+          other: oth
         };
 
 
