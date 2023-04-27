@@ -192,7 +192,9 @@ for (let j = 0; j < number; j++) {
         event.preventDefault();
         let hasFilledField = false;
         let inputs = formtwo.getElementsByTagName('input');
+        console.log(inputs.length);
           for (let i = 0; i < inputs.length; i++) {
+              console.log(inputs[i].value);
             if (inputs[i].value !== '') {
               hasFilledField = true;
               break;
