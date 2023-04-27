@@ -61,7 +61,6 @@
     <script>
     const form = document.querySelector('form');
 form.addEventListener('submit', async (event) => {
-    alert("In event listener");
     event.preventDefault();
 
     const formData = new FormData(form);
@@ -69,7 +68,6 @@ form.addEventListener('submit', async (event) => {
         name: formData.get('exercisename'),
         date: formData.get('date'),
     });
-    alert("This is the typeof " + typeof(formData.get('exercisename')));
 
     const url = '/exercise?' + params.toString();
     // alert("about to try");
