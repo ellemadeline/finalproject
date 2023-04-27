@@ -196,7 +196,7 @@ for (let j = 0; j < number; j++) {
         console.log(inputs.length);
           for (let i = 0; i < inputs.length; i++) {
               console.log(typeof(inputs[i].value));
-            if (inputs[i].value !== undefined) {
+            if (inputs[i].value != "") {
               hasFilledField = true;
               break;
             }
