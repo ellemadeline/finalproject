@@ -196,10 +196,10 @@ for (let j = 0; j < number; j++) {
         console.log(inputs.length);
           for (let i = 0; i < inputs.length; i++) {
               console.log(typeof(inputs[i].value));
-              console.log("Empty string: " + inputs[i].value == "");
-              console.log("undefined: " + inputs[i].value == undefined);
-              console.log("null: " + inputs[i].value == null);
-              console.log("single quote: " + inputs[i].value == '');
+              console.log("Empty string: " + (inputs[i].value == ""));
+              console.log("undefined: " + (inputs[i].value == undefined));
+              console.log("null: " + (inputs[i].value == null));
+              console.log("single quote: " + (inputs[i].value == ''));
 
 
               console.log(Boolean(inputs[i].value);
