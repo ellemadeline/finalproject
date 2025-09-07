@@ -1,83 +1,103 @@
-E4U (Exercise For You)
-Overview
+# E4U (Excerise For You)
 
-This repository contains the codebase for a web application designed and developed with 3 classmates. The app allows users to create and manage personalized workout profiles, track their exercise routines, and interact with an external API to search for relevant exercises. Users can also view, edit, and delete past workouts, making it a comprehensive fitness tracking tool.
+[![Node.js](https://img.shields.io/badge/Node.js-v18-green)](https://nodejs.org/)  
+[![MongoDB](https://img.shields.io/badge/MongoDB-v6.0-green)](https://www.mongodb.com/)
 
-The project demonstrates full-stack development skills, including front-end design, back-end server logic, and database integration using MongoDB.
+## Table of Contents
 
-Project Structure
+- [Overview](#overview)
+- [Project Structure](#project-structure)
+- [Features](#features)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Usage](#usage)
+- [Deployment](#deployment)
+- [Contributing](#contributing)
 
-index.html: The main landing page of the application.
+---
 
-login.html: User login page.
+## Overview
 
-register.html: User registration page.
+This repository contains the codebase for a web application designed and developed with **3 classmates**. The app allows users to:
 
-search.html: Page for searching exercises through an external API.
+- Create and manage personalized **workout profiles**
+- Track their exercise routines
+- Search for relevant exercises via an **external API**
+- View, edit, and delete past workouts
 
-track.html: Page to track and add workouts.
+The project demonstrates **full-stack development skills**, including front-end design, back-end server logic, and database integration using **MongoDB**.
 
-view.html: Page to view, edit, and delete past workouts.
+---
 
-server.js: The server-side logic for handling requests and serving pages.
+## Project Structure
 
-package.json: Node.js dependencies and scripts.
+| File | Description |
+|------|-------------|
+| `index.html` | Main landing page |
+| `login.html` | User login page |
+| `register.html` | User registration page |
+| `search.html` | Search exercises via API |
+| `track.html` | Track and add workouts |
+| `view.html` | View, edit, and delete past workouts |
+| `server.js` | Server-side logic for handling requests and pages |
+| `package.json` | Node.js dependencies and scripts |
+| `Procfile` | Deployment configuration |
 
-Procfile: Configuration file for deployment.
 
-Features
+---
 
-User Profiles: Create and manage personalized profiles using MongoDB.
+## Features
 
-Add Workouts: Log exercises and track progress over time.
+- **User Profiles**: Create and manage personalized profiles using MongoDB  
+- **Add Workouts**: Log exercises and track progress over time  
+- **Search Exercises**: Connects to an API to find relevant exercises  
+- **View Past Workouts**: Review previously logged workouts  
+- **Edit & Delete**: Modify or remove past workouts as needed  
 
-Search Exercises: Connects to an API to find relevant exercises.
+---
 
-View Past Workouts: Review previously logged workouts.
+## Getting Started
 
-Edit & Delete: Modify or remove past workouts as needed.
+### Prerequisites
 
-Getting Started
-Prerequisites
+- Node.js and npm installed on your machine  
+- MongoDB running locally or through a cloud provider
 
-Node.js and npm installed on your machine.
+### Installation
 
-MongoDB running locally or through a cloud provider.
+1. Clone the repository:
 
-Installation
-
-Clone the repository:
-
+```bash
 git clone https://github.com/ellemadeline/finalproject.git
 cd finalproject
 
+### Installation
 
 Install dependencies:
 
+```bash
 npm install
 
 
+### Start the Server
+
 Start the server:
 
+```bash
 npm start
 
+## Usage
 
-The application will be accessible at http://localhost:3000.
+- Register and log in to create a user profile  
+- Add workouts and track your exercises  
+- Search for exercises using the integrated API  
+- View, edit, or delete past workouts as needed  
 
-Usage
+---
 
-Register and log in to create a user profile.
+## Deployment
 
-Add workouts and track your exercises.
+For deployment, ensure that the `Procfile` is correctly configured for your hosting platform. Common platforms like **Heroku** can use this file to determine how to run your application.
 
-Search for exercises using the integrated API.
 
-View, edit, or delete past workouts as needed.
-
-Deployment
-
-For deployment, ensure that the Procfile is correctly configured for your hosting platform. Common platforms like Heroku can use this file to determine how to run your application.
-
-Contributing
-
-Contributions are welcome! Please fork the repository, create a new branch, and submit a pull request with your proposed changes.
